@@ -25,9 +25,11 @@ class Game:
         self.running = True
 
         # TMX MAP
-        tmx_data = pytmx.util_pygame.load_pygame("desertv68.tmx")
+        tmx_data = load_pygame("desertv68.tmx")
         map_data = pyscroll.data.TiledMapData(tmx_data)
-        map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.screen.get_size())
+        map_layer = pyscroll.orthographic.BufferedRenderer(
+            map_data, self.screen.get_size()
+        )
 
         # PLAYER
         player_position = tmx_data.get_object_by_name("player_spawn")
@@ -39,11 +41,13 @@ class Game:
         # BINARY RAIN
         self.binary = []
         for i in range(80):
-            self.binary.append([
-                random.randint(0, 1500),
-                random.randint(-1000, 1000),
-                random.choice(["0", "1"])
-            ])
+            self.binary.append(
+                [
+                    random.randint(0, 1500),
+                    random.randint(-1000, 1000),
+                    random.choice(["0", "1"]),
+                ]
+            )
 
         # GLITCH
         self.glitch_timer = 0
@@ -93,6 +97,7 @@ class Game:
             self.player.move_left()
         elif pressed[pygame.K_RIGHT]:
             self.player.move_right()
+
     def run(self):
 
         clock = pygame.time.Clock()
@@ -149,7 +154,9 @@ class Game:
                 self.screen.blit(title, title_rect)
 
                 # LORE
-                lore = self.font.render("1 min = 1 sec | reality unstable", True, (150, 150, 150))
+                lore = self.font.render(
+                    "1 min = 1 sec | reality unstable", True, (150, 150, 150)
+                )
                 lore_rect = lore.get_rect(center=(center_x, 220))
                 self.screen.blit(lore, lore_rect)
 
@@ -169,7 +176,7 @@ class Game:
 
                 self.group.update()
                 self.group.draw(self.screen)
-            
+
             clock.tick(60)
             pygame.display.flip()
 
