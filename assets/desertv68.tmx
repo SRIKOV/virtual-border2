@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="25" height="14" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="3">
- <tileset firstgid="1" source="../desert2.tsx"/>
- <tileset firstgid="26" source="../desert1.tsx"/>
- <tileset firstgid="51" source="../RPG Nature Tileset.tsx"/>
- <tileset firstgid="746" source="../Adobe Express - file (5).tsx"/>
+ <tileset firstgid="1" source="desert2.tsx"/>
+ <tileset firstgid="26" source="desert1.tsx"/>
+ <tileset firstgid="51" source="RPG Nature Tileset.tsx"/>
+ <tileset firstgid="746" source="Adobe Express - file (5).tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="25" height="14">
   <data encoding="csv">
 1,2,3,4,5,1,2,3,41,42,43,44,45,4,5,1,2,3,4,5,1,2,3,4,5,

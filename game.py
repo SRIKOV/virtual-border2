@@ -25,7 +25,7 @@ class Game:
         self.running = True
 
         # TMX MAP
-        tmx_data = load_pygame("desertv68.tmx")
+        tmx_data = load_pygame("assets/desertv68.tmx")
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(
             map_data, self.screen.get_size()
