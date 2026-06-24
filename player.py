@@ -1,8 +1,7 @@
 import pygame
-import animation
 
 
-class Player:
+class Player(pygame.sprite.Sprite):
 
     def __init__(self, x, y):
         super().__init__()

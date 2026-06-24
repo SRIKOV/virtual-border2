@@ -115,10 +115,10 @@ class Game:
                     if self.state == "menu":
 
                         if event.key == pygame.K_UP:
-                            self.selected -= 1
+                            self.selected = (self.selected - 1) % len(self.options)
 
                         if event.key == pygame.K_DOWN:
-                            self.selected += 1
+                            self.selected = (self.selected + 1) % len(self.options)
 
                         if event.key == pygame.K_RETURN:
 
@@ -175,6 +175,7 @@ class Game:
                 self.handle_input()
 
                 self.group.update()
+                self.group.center(self.player.rect.center)
                 self.group.draw(self.screen)
 
             clock.tick(60)
