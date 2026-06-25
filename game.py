@@ -57,7 +57,7 @@ class Game:
         # ======================
         # TMX MAP
         # ======================
-        tmx_data = load_pygame("assets/desertv70.tmx")
+        tmx_data = load_pygame("desertv70.tmx")
 
         map_data = pyscroll.data.TiledMapData(tmx_data)
 
