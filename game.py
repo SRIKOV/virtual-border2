@@ -1,10 +1,10 @@
-import pygame
+import pygame 
 import random
 import pytmx
 import pyscroll
 from pytmx.util_pygame import load_pygame
 
-from player import Player
+import player as player_
 
 
 class Game:
@@ -57,7 +57,7 @@ class Game:
         # ======================
         # TMX MAP
         # ======================
-        tmx_data = load_pygame("desertv70.tmx")
+        tmx_data = load_pygame("assets/desertv70.tmx")
 
         map_data = pyscroll.data.TiledMapData(tmx_data)
 
@@ -67,7 +67,7 @@ class Game:
         )
         #généner un joueur
         player_position = tmx_data.get_object_by_name("player_spawn")
-        self.player = Player(player_position.x, player_position.y)
+        self.player = player_.Player(player_position.x, player_position.y)
         self.player._layer = 2
 
         #définir une liste contenant les rectangles de collision
@@ -98,6 +98,8 @@ class Game:
 
         self.group.add(self.player)
 
+        enter_tour = tmx_data.get_object_by_name("enter_tour")
+        self.enter_tour_rect = pygame.Rect(enter_tour.x, enter_tour.y, enter_tour.width, enter_tour.height)
         # ======================
         # BINARY RAIN
         # ======================
@@ -199,8 +201,13 @@ class Game:
                 self.player.position = old_position
                 self.player.update()
                 break
+    
+    def switch_to_tour(self):
+        pass
 
     def update(self):
+        if self.player.feet.colliderect(self.enter_tour_rect):
+            self.switch_to_tour()
         self.group.update()
 
         # verification collision
@@ -249,6 +256,9 @@ class Game:
                                 self.state = "settings"
 
                             elif self.selected == 2:
+                                self.state = "scoreboard"
+
+                            elif self.selected == 3:
                                 running = False
 
                     # ======================
